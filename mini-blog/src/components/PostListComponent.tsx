@@ -24,7 +24,7 @@ export const PostListComponent= ({posts}:Postprops)=>{
                     {isNewPost(post.date) && <span className="new-post-badge">New Post</span>}
                     <h2>{post.title}</h2>
                     <p>{post.desc}</p>
-                    <small>By {post.author} On {post.date.toLocaleDateString()}</small>
+                    <small  style={{fontStyle:"italic"}}>By {post.author} On {post.date.toLocaleDateString()}</small>
                     <button onClick={()=>setSelectedPost(post)}>learn more</button>
                 </article>
             ))}
