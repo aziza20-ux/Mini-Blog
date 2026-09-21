@@ -2,11 +2,15 @@ import type { PostType } from '../types/post';
 import {useState} from 'react';
 import {isNewPost} from '../utilies/NewPostDate';
 import {PostComponent} from '../components/PostComponent';
-import '../styles/PostListStyles.css'
+import '../styles/PostListStyles.css';
+import {withLogger} from './HocComponent';
+
 
 interface Postprops{
     posts:PostType[]
 }
+
+const LoggedPost=withLogger(PostComponent);
 
 
 export const PostListComponent= ({posts}:Postprops)=>{
@@ -14,7 +18,7 @@ export const PostListComponent= ({posts}:Postprops)=>{
 
     if(selectedPost){
         return(
-            <PostComponent post={selectedPost} onBack={()=>setSelectedPost(null)}/>
+            <LoggedPost post={selectedPost} onBack={()=>setSelectedPost(null)}/>
         )
     }
     return(
