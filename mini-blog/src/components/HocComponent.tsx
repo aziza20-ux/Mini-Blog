@@ -4,10 +4,10 @@ import type {ComponentType} from 'react';
 export const withLogger = <p extends object>(Component: ComponentType<p>)=>{
     const WrappedComponent=(props:p)=>{
         useEffect(()=>{
-            console.log(`Component ${Component.name} mounted`);
+            console.log(`Component mounted`);
 
             return()=>{
-                console.log(`Component ${Component.name} unmounted`);
+                console.log(`Component  unmounted`);
             };
         },[])
         return <Component {...props}/>
