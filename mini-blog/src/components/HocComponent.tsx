@@ -1,8 +1,8 @@
 import {useEffect} from 'react';
 import type {ComponentType} from 'react';
 
-export const withLogger = <p extends object>(Component: ComponentType<p>)=>{
-    const WrappedComponent=(props:p)=>{
+export const withLogger = <P extends object>(Component: ComponentType<P>)=>{
+    const WrappedComponent=(props:P)=>{
         useEffect(()=>{
             console.log(`Component mounted`);
 

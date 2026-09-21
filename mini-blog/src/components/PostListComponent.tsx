@@ -1,6 +1,6 @@
 import type { PostType } from '../types/post';
 import {useState} from 'react';
-import {isNewPost} from '../utilies/NewPostDate';
+import {isNewPost} from '../utility/NewPostDate';
 import {PostComponent} from '../components/PostComponent';
 import '../styles/PostListStyles.css';
 import {withLogger} from './HocComponent';
