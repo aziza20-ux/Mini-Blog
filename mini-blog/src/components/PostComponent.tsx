@@ -1,4 +1,5 @@
 import type { PostType } from '../types/post';
+import {memo} from 'react'
 
 
 interface Postprops{
@@ -6,7 +7,7 @@ interface Postprops{
     onBack:()=>void
 }
 
-export const PostComponent=({post,onBack}:Postprops)=>{
+export const PostComponent=memo(({post,onBack}:Postprops)=>{
     return (
         <>
              <button onClick={onBack}>Back</button>
@@ -20,4 +21,4 @@ export const PostComponent=({post,onBack}:Postprops)=>{
         </>
 
     )
-}
+})
