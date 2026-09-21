@@ -93,11 +93,12 @@ mini-blog/
 ├── src/
 │   ├── assets/              # Static image assets
 │   ├── components/
-│   │   ├── App.tsx          # Root component
+│   │   |        
 │   │   ├── HeaderComponent.tsx
 │   │   ├── PostListComponent.tsx
 │   │   ├── PostComponent.tsx
 │   │   └── HocComponent.tsx # withLogger HOC
+|   |__App.tsx # Root component
 │   ├── data/
 │   │   └── posts.ts         # Hardcoded sample post data
 │   ├── styles/
@@ -187,3 +188,27 @@ Two styling methods are used:
 - The "New Post" badge will only appear if a post's `date` is within 24 hours of the current time. The sample dates in `posts.ts` are set in the future (September 2026), so the badge will appear once those dates are reached or if the dates are updated to a recent value.
 - The "New Post" navigation link in the header is not functional; it is a static label.
 - There is no routing library. Navigation between the list and detail view is handled with a `useState` flag inside `PostListComponent`.
+
+---
+
+## Challenges and Solutions
+
+- **TypeScript typing** — Getting familiar with typing all parts of a React application (props, objects, and components) took time initially. Working through each case individually helped build confidence with the TypeScript type system.
+
+- **Generic syntax ambiguity in TSX** — When writing `withLogger`, the TypeScript compiler interpreted the generic parameter `<P>` as the start of a JSX element:
+
+  ```tsx
+  const withLogger = <P>(Component: ComponentType<P>) => {
+  ```
+
+  Adding a trailing comma resolved the ambiguity, signalling to the compiler that `<P,>` is a generic type parameter rather than JSX:
+
+  ```tsx
+  const withLogger = <P,>(Component: ComponentType<P>) => {
+  ```
+
+- **Spreading props onto a generic component** — Returning `<Component {...props}/>` inside `withLogger` caused a TypeScript error because the generic type `P` was not constrained to object-like types. Extending the constraint to `P extends object` resolved the issue:
+
+  ```tsx
+  const withLogger = <P extends object>(Component: ComponentType<P>) => {
+  ```
