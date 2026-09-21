@@ -159,7 +159,7 @@ Two styling methods are used:
 ## Optimization Strategy
 
 - **`React.memo`** — `PostComponent` is memoised so it only re-renders when its `post` or `onBack` props actually change, avoiding unnecessary renders triggered by parent state updates.
-- **`key` prop** — Each post in the list uses `post.title` as its `key`, which allows React to efficiently reconcile the list during re-renders. Using a unique and stable identifier (such as an `id` field) would be preferable in a production application.
+- **`key` prop** — Each post in the list uses `post.id` as its `key`. Because `id` is a dedicated unique identifier defined on the `PostType` interface, React can efficiently and reliably reconcile the list during re-renders.
 - **HOC with `useEffect`** — The `withLogger` HOC uses an empty dependency array (`[]`) so the mount/unmount logging runs exactly once per component lifecycle, with no unnecessary effect re-runs.
 
 ---
