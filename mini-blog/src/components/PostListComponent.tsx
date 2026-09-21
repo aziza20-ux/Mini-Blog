@@ -24,7 +24,7 @@ export const PostListComponent= ({posts}:Postprops)=>{
     return(
         <div id="post-list">
             {posts.map((post)=>(
-                <article key={post.title} className={post.author ==='John'?'highlighted':'post'}>
+                <article key={post.id} className={post.author ==='John'?'highlighted':'post'}>
                     {isNewPost(post.date) && <span className="new-post-badge">New Post</span>}
                     <h2>{post.title}</h2>
                     <p>{post.desc}</p>

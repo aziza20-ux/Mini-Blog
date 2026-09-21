@@ -1,5 +1,6 @@
 export interface PostType {
-    author: string
+    id: string,
+    author: string,
     title: string,
     desc: string,
     date: Date
