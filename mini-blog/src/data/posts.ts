@@ -19,6 +19,6 @@ export const posts: PostType[] = [
     author: "Alice",
     title: "Building Components",
     desc: "Explore how reusable components can help you build maintainable React applications.",
-    date: new Date("2026-09-21"),
+    date: new Date("2026-09-22"),
   },
 ];
